@@ -1,0 +1,52 @@
+.footer {
+  width: 100%;
+  max-width: 1140px;
+  margin: 100px auto 0;
+
+  &-social {
+    display: flex;
+    
+    li {
+      font-size: 1.875rem;
+      margin-right: 20px;
+    }
+
+    a {
+      color: rgba($white, .4);
+      transition: all .3s ease;
+
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+
+  &-menus {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+
+  &-menu {
+    li {
+      font-size: .875rem;
+      margin-bottom: 10px;
+    }
+
+    a {
+      color: rgba($white, .4);
+      text-decoration: none;
+      transition: all .3s ease;
+
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+
+  &-credits {
+    margin: 20px 0;
+    font-size: .75rem;
+    color: rgba($white, .4);
+  }
+}

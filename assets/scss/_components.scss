@@ -1,0 +1,43 @@
+.rating {
+  display: flex;
+  align-items: center;
+  font-size: 1.125rem;
+
+  &-label {
+    margin-right: 10px;
+  }
+
+  &-rate {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: $dark;
+    border-radius: 50%;
+    border: 3px solid $green;
+  }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  border: 0;
+  background: rgba($dark, .5);
+  color: $white;
+  font-size: 1rem;
+  padding: 10px 30px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all .3s ease;
+
+  &:hover {
+    background: rgba($white, .8);
+    color: $dark;
+  }
+
+  i {
+    font-size: .75rem;
+    margin-right: 10px;
+  }
+}

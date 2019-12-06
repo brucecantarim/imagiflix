@@ -1,0 +1,144 @@
+.header {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding-top: 25px;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-navigation {
+    display: flex;
+    align-items: center;
+  }
+  
+  &-brand {
+    svg {
+      fill: $primary;
+    }
+  }
+
+  &-menu {
+    display: flex;
+    margin-left: 40px;
+
+    li {
+      font-size: 0.875rem;
+    }
+
+    .active {
+      font-weight: bold;
+    }
+
+    a {
+      color: $white;
+      text-decoration: none;
+      display: block;
+      padding: 10px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &-profile {
+    display: flex;
+    align-items: center;
+  }
+
+  &-search {
+    position: relative;
+    margin-right: 30px;
+
+    i {
+      position: relative;
+      z-index: 1;
+      font-size: 1.25rem;
+    }
+
+    input {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      margin-right: -15px;
+      margin-top: -20px;
+      background: $dark;
+      border: 1px solid $white;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      padding: 10px 50px 10px 10px;
+      color: $white;
+      width: 220px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all .3s ease;
+
+      &:focus {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    &:hover {
+      input {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  &-account {
+    position: relative;
+  }
+
+  &-avatar {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+
+    i {
+      margin-left: 10px;
+    }
+  }
+
+  &-dropdown {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background: $dark;
+    border: 1px solid rgba($white, .3);
+    border-radius: 4px;
+    min-width: 170px;
+    padding: 15px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s ease;
+
+    li {
+      font-size: 0.875rem;
+    }
+
+    a {
+      color: $white;
+      text-decoration: none;
+      display: block;
+      padding: 5px 0;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &-account:hover {
+    .header-dropdown {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
