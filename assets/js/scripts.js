@@ -31,7 +31,7 @@ $(document).ready(function(){
     imageEl.style.backgroundImage = `url(${IMAGEURL}/original/${backdrop_path})`;
   };
 
-  const setMovie = ({ title, name, vote_average, poster_path }) => {
+  const setMovie = (elId, { title, name, vote_average, poster_path }) => {
 
     let scoreColor;
 
@@ -59,7 +59,7 @@ $(document).ready(function(){
     </div>
     `;
 
-    $('.movies-list').slick('slickAdd', movieEl);
+    $(elId).slick('slickAdd', movieEl);
   };
 
   const getMovies = () => {
@@ -70,7 +70,7 @@ $(document).ready(function(){
       let moviesList = data.results;
       moviesList.shift();
 
-      moviesList.map( movie => setMovie(movie) );
+      moviesList.map( movie => setMovie('#movies-list', movie) );
     })
     .catch(err => console.log(`ERRO: ${err}`));
   };
@@ -79,7 +79,7 @@ $(document).ready(function(){
     fetch(`${URL}/discover/tv?api_key=${APIKEY}&language=pt-BR&sort_by=popularity.desc`)
      .then( res => res.json() )
      .then( data => {
-       data.results.map( serie => setMovie(serie) );
+       data.results.map( serie => setMovie('#series-list', serie) );
      })
      .catch(err => console.log(`ERRO: ${err}`));
    };
