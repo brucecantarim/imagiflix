@@ -20,8 +20,6 @@ $(document).ready(function(){
   }
 
   const setFeaturedMovie = ({ title, vote_average, backdrop_path }) => {
-    vote_average = 1;
-    
     let titleEl = document.getElementById('featured-title');
     titleEl.innerHTML = title;
 
@@ -33,12 +31,59 @@ $(document).ready(function(){
     imageEl.style.backgroundImage = `url(${IMAGEURL}/original/${backdrop_path})`;
   };
 
-  const getFeaturedMovie = () => {
+  const setMovie = ({ title, name, vote_average, poster_path }) => {
+
+    let scoreColor;
+
+    if(vote_average >= 7) {
+      scoreColor = "green";
+    } else if (vote_average <= 3) {
+      scoreColor = "red";
+    } else {
+      scoreColor = "yellow";
+    }
+
+    const movieEl = `
+    <div class="movies-item">
+      <div class="movies-info">
+        <i class="far fa-play-circle"></i>
+        
+        <h3>${ title ? title : name }</h3>
+
+        <div class="rating">
+          <div class="rating-rate" style="border-color: ${scoreColor}">${ vote_average }</div>
+        </div>
+      </div>
+
+      <img src="${ IMAGEURL }/w185/${ poster_path}" alt="">
+    </div>
+    `;
+
+    $('.movies-list').slick('slickAdd', movieEl);
+  };
+
+  const getMovies = () => {
    fetch(`${URL}/discover/movie?api_key=${APIKEY}&language=pt-BR&sort_by=popularity.desc`)
     .then( res => res.json() )
-    .then( data => setFeaturedMovie(data.results[0]))
+    .then( data => {
+      setFeaturedMovie(data.results[0]);
+      let moviesList = data.results;
+      moviesList.shift();
+
+      moviesList.map( movie => setMovie(movie) );
+    })
     .catch(err => console.log(`ERRO: ${err}`));
   };
 
-  getFeaturedMovie();
+  const getSeries = () => {
+    fetch(`${URL}/discover/tv?api_key=${APIKEY}&language=pt-BR&sort_by=popularity.desc`)
+     .then( res => res.json() )
+     .then( data => {
+       data.results.map( serie => setMovie(serie) );
+     })
+     .catch(err => console.log(`ERRO: ${err}`));
+   };
+
+  getMovies();
+  getSeries();
 });
