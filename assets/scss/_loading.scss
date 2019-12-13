@@ -1,0 +1,31 @@
+#loading {
+    position: fixed;
+    display: grid;
+    place-items: center;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    background-color: #000;
+
+    .loading-animation {
+        width: 50vmin;
+        height: 50vmin;
+        border: .5rem solid #F00;
+        border-left: none;
+        border-bottom: none;
+        border-radius: 50%;
+        animation: spin 1.5s linear 0s infinite;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

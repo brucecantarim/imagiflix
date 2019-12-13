@@ -62,6 +62,11 @@ $(document).ready(function(){
     $(elId).slick('slickAdd', movieEl);
   };
 
+  const hideEl = elName => {
+    const el = document.getElementById(elName);
+    el.style.display = "none";
+  };
+
   const getMovies = () => {
    fetch(`${URL}/discover/movie?api_key=${APIKEY}&language=pt-BR&sort_by=popularity.desc`)
     .then( res => res.json() )
@@ -72,7 +77,8 @@ $(document).ready(function(){
 
       moviesList.map( movie => setMovie('#movies-list', movie) );
     })
-    .catch(err => console.log(`ERRO: ${err}`));
+    .catch(err => console.log(`ERRO: ${err}`))
+    .finally(() => hideEl('loading'));
   };
 
   const getSeries = () => {
