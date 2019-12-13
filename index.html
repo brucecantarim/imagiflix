@@ -23,8 +23,8 @@
         
         <ul class="header-menu">
           <li class="active"><a href="#">Início</a></li>
-          <li><a href="#">Séries</a></li>
-          <li><a href="#">Filmes</a></li>
+          <li><a href="#series">Séries</a></li>
+          <li><a href="#movies">Filmes</a></li>
         </ul>
       </div>
 
@@ -70,7 +70,7 @@
   </section>
 
   <main class="main">
-    <section class="movies">
+    <section id="movies" class="movies">
       <div class="container">
         <h2 class="movies-title">Filmes populares na Imagiflix</h2>
       </div>
@@ -79,7 +79,7 @@
       </div>
     </section>
 
-    <section class="movies">
+    <section id="series" class="movies">
       <div class="container">
         <h2 class="movies-title">Séries populares na Imagiflix</h2>
       </div>
@@ -129,6 +129,20 @@
 
   <div id="loading">
     <div class="loading-animation"></div>
+  </div>
+
+  <div id="modal" class="modal">
+    <img src="/assets/images/cover1.jpg" alt="" class="modal__poster">
+    <div class="modal__info">
+      <h2 class="modal__title">Lorem Ipsum</h2>
+      <small class="modal__original-title">Lorem Ipsum</small>
+      <p class="modal__description">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non recusandae beatae adipisci quidem ea expedita accusamus neque aliquam, ut cum voluptatem nesciunt fugit rem ducimus officiis sequi. Placeat, velit saepe.
+      </p>
+      <div class="modal__score">8</div>
+      <div class="modal__duration">120min</div>
+      <a href="#" class="modal__website">Site oficial</a>
+    </div>
   </div>
 
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>

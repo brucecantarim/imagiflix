@@ -1,0 +1,25 @@
+.modal {
+    position: fixed;
+    z-index: 9;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    place-items: center;
+    gap: 2rem;
+    top: 5vh;
+    left: 5vw;
+    width: 90vw;
+    height: 90vh;
+    padding: 2rem;
+
+    background-color: rgba($dark, .98);
+    box-shadow: 0 -.1rem 1rem $dark;
+
+    &__poster {
+        width: auto;
+        height: 100%;
+    }
+
+    &__info {
+        align-self: start;
+    }
+}
