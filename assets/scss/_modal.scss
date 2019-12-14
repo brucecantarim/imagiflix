@@ -1,7 +1,7 @@
 .modal {
     position: fixed;
     z-index: 9;
-    display: grid;
+    display: none;
     grid-template-columns: 40% 60%;
     place-items: center;
     gap: 2rem;

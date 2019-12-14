@@ -9,6 +9,20 @@ $(document).ready(function(){
   const IMAGEURL = "https://image.tmdb.org/t/p";
   const APIKEY = "8393542f0d97802c12d24480ce1058c4";
 
+  const $id = elName => document.getElementById(elName);
+  const $class = elName => document.querySelector(elName);
+  const $classes = elName => document.querySelectorAll(elName);
+
+  const openModal = id => {
+    $id('modal').style.display = "grid";
+  };
+
+  const closeModal = () => {
+    $id('modal').style.display = "none";
+  };
+
+  $('.modal__close').on('click', () => closeModal());
+
   const setRatingColor = (el, score)  => {
     if(score >= 7) {
       el.style.borderColor = "green";
@@ -20,18 +34,18 @@ $(document).ready(function(){
   }
 
   const setFeaturedMovie = ({ title, vote_average, backdrop_path }) => {
-    let titleEl = document.getElementById('featured-title');
+    let titleEl = $id('featured-title');
     titleEl.innerHTML = title;
 
-    let scoreEl = document.getElementById('featured-score');
+    let scoreEl = $id('featured-score');
     scoreEl.innerHTML = vote_average;
     setRatingColor(scoreEl, vote_average);
 
-    let imageEl = document.getElementById('featured-image');
+    let imageEl =$id('featured-image');
     imageEl.style.backgroundImage = `url(${IMAGEURL}/original/${backdrop_path})`;
   };
 
-  const setMovie = (elId, { title, name, vote_average, poster_path }) => {
+  const setMovie = (elId, { id, title, name, vote_average, poster_path }) => {
 
     let scoreColor;
 
@@ -44,7 +58,7 @@ $(document).ready(function(){
     }
 
     const movieEl = `
-    <div class="movies-item">
+    <div class="movies-item" data-id="${id}">
       <div class="movies-info">
         <i class="far fa-play-circle"></i>
         
@@ -63,7 +77,7 @@ $(document).ready(function(){
   };
 
   const hideEl = elName => {
-    const el = document.getElementById(elName);
+    const el = $id(elName);
     el.style.display = "none";
   };
 
@@ -78,7 +92,12 @@ $(document).ready(function(){
       moviesList.map( movie => setMovie('#movies-list', movie) );
     })
     .catch(err => console.log(`ERRO: ${err}`))
-    .finally(() => hideEl('loading'));
+    .finally(() => {
+      hideEl('loading');
+      $('.movies-item').on('click', (e) => {
+        openModal(e.currentTarget.dataset.id);
+      });
+    });
   };
 
   const getSeries = () => {
@@ -92,4 +111,5 @@ $(document).ready(function(){
 
   getMovies();
   getSeries();
+
 });
