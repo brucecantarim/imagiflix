@@ -20,6 +20,63 @@
     }
 
     &__info {
+        position: relative;
         align-self: start;
+        padding-right: 2rem;
+        height: 100%;
+    }
+
+    &__close {
+        cursor: pointer;
+        position: absolute;
+        top: -1rem;
+        right: 1rem;
+        color: $white;
+        font-size: 2rem;
+        transition: all .3s ease;
+
+        &:hover {
+            top: -1.05rem;
+            right: .9rem;
+            font-size: 2.2rem;
+            color: $primary;
+            transform: rotate(-360deg);
+        }
+    }
+
+    &__title {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    &__original-title {
+        font-size: 1rem;
+        font-style: italic;
+    }
+
+    &__description {
+        margin: 3rem auto;
+    }
+
+    &__data-container {
+        display: grid;
+        grid-template-columns: 40px auto;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    &__duration {
+        width: -moz-fit-content;
+        width: fit-content;
+        background-color: $primary;
+        border-radius: .2rem;
+        padding: .2rem .5rem;
+    }
+
+    &__website {
+        position: absolute;
+        bottom: 0;
+        text-decoration: none;
+        color: $primary;
     }
 }
