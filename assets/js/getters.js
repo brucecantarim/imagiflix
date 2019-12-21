@@ -1,18 +1,19 @@
 import CONST from './constants';
 import { hideEl, showEl } from './utils';
 import { setFeaturedMovie, setMovie } from './setters';
-import { openModal } from './modal';
+import { openModal, setModal } from './modal';
 
 export const getTitleInfo = ({ id, type }) => {
     showEl('loading', 'grid');
     fetch(`${CONST.URL}/${type}/${id}${CONST.APISTRING}`)
         .then(res => res.json())
         .then(data => {
-            console.log(data);
-            // TODO: Call function to set modal content
+            setModal(data);
         })
         .catch(err => console.log(`ERRO: ${err}`))
-        .finally(() => hideEl('loading'));
+        .finally(() => {
+            hideEl('loading');
+        });
 };
 
 export const getMovies = () => {
@@ -31,7 +32,8 @@ export const getMovies = () => {
             hideEl('loading');
             $('.movies-item').on('click', (e) => {
                 const elData = e.currentTarget.dataset;
-                openModal(elData);
+                setModal(elData)
+                    .then(() => openModal());
             });
         });
 };
@@ -48,7 +50,7 @@ export const getSeries = () => {
             hideEl('loading');
             $('.movies-item').on('click', (e) => {
                 const elData = e.currentTarget.dataset;
-                openModal(elData);
+                getTitleInfo(elData);
             });
         });
 };

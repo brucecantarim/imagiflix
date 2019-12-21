@@ -1,5 +1,6 @@
 import CONST from './constants';
 import { $id } from './utils';
+import { openModal } from './modal';
 
 export const setRatingColor = (el, score) => {
     if (score >= 7) {
@@ -52,4 +53,6 @@ export const setMovie = (elId, { id, title, name, vote_average, poster_path }) =
     `;
 
     $(elId).slick('slickAdd', movieEl);
+
+    openModal();
 };

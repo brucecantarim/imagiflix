@@ -7,6 +7,5 @@ $(document).ready(function(){
   startSlick();
   getter.getMovies();
   getter.getSeries();
-  setModalListeners();
 
 });
