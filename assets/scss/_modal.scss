@@ -2,6 +2,7 @@
     position: fixed;
     z-index: 9;
     display: none;
+    opacity: 0;
     grid-template-columns: 40% 60%;
     place-items: center;
     gap: 2rem;
@@ -13,6 +14,8 @@
 
     background-color: rgba($dark, .98);
     box-shadow: 0 -.1rem 1rem $dark;
+
+    transition: opacity .3s ease;
 
     &__poster {
         width: auto;
