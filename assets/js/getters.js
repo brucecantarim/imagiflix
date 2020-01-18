@@ -1,6 +1,6 @@
 import CONST from './constants';
 import { hideEl, showEl } from './utils';
-import { setFeaturedMovie, setMovie } from './setters';
+import { setFeaturedMovie, setMovie, setPosterListener } from './setters';
 import { openModal, setModal } from './modal';
 
 export const getTitleInfo = ({ id, type }) => {
@@ -13,6 +13,7 @@ export const getTitleInfo = ({ id, type }) => {
         .catch(err => console.log(`ERRO: ${err}`))
         .finally(() => {
             hideEl('loading');
+            openModal();
         });
 };
 
@@ -30,10 +31,9 @@ export const getMovies = () => {
         .catch(err => console.log(`ERRO: ${err}`))
         .finally(() => {
             hideEl('loading');
-            $('.movies-item').on('click', (e) => {
+            $('.movie').on('click', (e) => {
                 const elData = e.currentTarget.dataset;
-                setModal(elData)
-                    .then(() => openModal());
+                getTitleInfo(elData);
             });
         });
 };
@@ -48,9 +48,14 @@ export const getSeries = () => {
         .catch(err => console.log(`ERRO: ${err}`))
         .finally(() => {
             hideEl('loading');
-            $('.movies-item').on('click', (e) => {
+            $('.serie').on('click', (e) => {
                 const elData = e.currentTarget.dataset;
                 getTitleInfo(elData);
             });
         });
+};
+
+export const getLibrary = () => {
+    getMovies();
+    getSeries();
 };

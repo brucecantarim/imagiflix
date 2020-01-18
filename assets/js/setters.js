@@ -37,7 +37,7 @@ export const setMovie = (elId, { id, title, name, vote_average, poster_path }) =
     }
 
     const movieEl = `
-    <div class="movies-item" data-id="${id}" data-type="${title ? 'movie' : 'tv'}">
+    <div class="movies-item ${title ? 'movie' : 'serie'}" data-id="${id}" data-type="${title ? 'movie' : 'tv'}">
       <div class="movies-info">
         <i class="far fa-play-circle"></i>
         
@@ -53,6 +53,4 @@ export const setMovie = (elId, { id, title, name, vote_average, poster_path }) =
     `;
 
     $(elId).slick('slickAdd', movieEl);
-
-    openModal();
 };

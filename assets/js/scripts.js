@@ -1,11 +1,10 @@
 import { startSlick } from "./carousel";
 import * as getter from "./getters";
-import { setModalListeners } from "./modal";
+import { $id } from "./utils";
 
 $(document).ready(function(){
   
   startSlick();
-  getter.getMovies();
-  getter.getSeries();
+  getter.getLibrary();
 
 });
